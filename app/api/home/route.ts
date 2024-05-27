@@ -40,7 +40,7 @@ export async function POST(req: NextRequest): Promise<Response> {
 //             <head>
 //                 <title>Send Message</title>
 //                 <meta property="fc:frame" content="vNext"/>
-//                 <meta property="fc:frame:image" content="https://gmp-frame-workshop.vercel.appsend-frame.png" />
+//                 <meta property="fc:frame:image" content="https://gmp-frame-workshop.vercel.app/send-frame.png" />
 //                 <meta property="fc:frame:input" content="Type your message here" />
 //                 <meta property="fc:frame:button:1" content="Send Message" />
 //                 <meta property="fc:frame:button:1:action" content="tx"/>
