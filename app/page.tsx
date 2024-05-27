@@ -6,7 +6,7 @@ const appInfo = {
   name: "Farcaster Frame to Send Multichain Messages with Axelar GMP",
   description:
     "Build a Farcaster Frame to Send Multichain Messages with Axelar GMP 🔥",
-  image: "https://gmp-frame-workshop.vercel.apphome-frame.png",
+  image: "https://gmp-frame-workshop.vercel.app/home-frame.png",
   postUrl: "https://gmp-frame-workshop.vercel.app/api/home",
 };
 
