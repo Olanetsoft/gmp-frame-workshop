@@ -6,8 +6,8 @@ const appInfo = {
   name: "Farcaster Frame to Send Multichain Messages with Axelar GMP",
   description:
     "Build a Farcaster Frame to Send Multichain Messages with Axelar GMP 🔥",
-  image: "http://localhost:3000/home-frame.png",
-  postUrl: "http://localhost:3000/api/home",
+  image: "https://gmp-frame-workshop.vercel.app//home-frame.png",
+  postUrl: "https://gmp-frame-workshop.vercel.app//api/home",
 };
 
 const frameMetadata = getFrameMetadata({
