@@ -11,18 +11,18 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         {
           action: "tx",
           label: "Send Message",
-          target: "https://gmp-frame-workshop.vercel.app//api/send-message",
+          target: "https://gmp-frame-workshop.vercel.appapi/send-message",
           postUrl:
-            "https://gmp-frame-workshop.vercel.app//api/send-message-success",
+            "https://gmp-frame-workshop.vercel.appapi/send-message-success",
         },
         // {
         //   action: "post_redirect",
         //   label: "Go Back",
-        //   target: "https://gmp-frame-workshop.vercel.app//",
+        //   target: "https://gmp-frame-workshop.vercel.app",
         // },
       ],
-      image: "https://gmp-frame-workshop.vercel.app//send-frame.png",
-      postUrl: "https://gmp-frame-workshop.vercel.app//api/send-message",
+      image: "https://gmp-frame-workshop.vercel.appsend-frame.png",
+      postUrl: "https://gmp-frame-workshop.vercel.appapi/send-message",
     })
   );
 }
@@ -40,14 +40,14 @@ export async function POST(req: NextRequest): Promise<Response> {
 //             <head>
 //                 <title>Send Message</title>
 //                 <meta property="fc:frame" content="vNext"/>
-//                 <meta property="fc:frame:image" content="https://gmp-frame-workshop.vercel.app//send-frame.png" />
+//                 <meta property="fc:frame:image" content="https://gmp-frame-workshop.vercel.appsend-frame.png" />
 //                 <meta property="fc:frame:input" content="Type your message here" />
 //                 <meta property="fc:frame:button:1" content="Send Message" />
 //                 <meta property="fc:frame:button:1:action" content="tx"/>
-//                 <meta property="fc:frame:button:1:target" content="https://gmp-frame-workshop.vercel.app//api/send-message"/>
+//                 <meta property="fc:frame:button:1:target" content="https://gmp-frame-workshop.vercel.appapi/send-message"/>
 //                 <meta property="fc:frame:button:2" content="Go Back"/>
 //                  <meta property="fc:frame:button:2:action" content="post_redirect"/>
-//                 <meta property="fc:frame:button:2:target" content="https://gmp-frame-workshop.vercel.app//"/>
+//                 <meta property="fc:frame:button:2:target" content="https://gmp-frame-workshop.vercel.app"/>
 //                 <meta property="fc:frame:post_url" content="http://localhost:300/api/send-message"/>
 //             </head>
 //             </html>
