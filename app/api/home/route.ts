@@ -21,7 +21,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         //   target: "https://gmp-frame-workshop.vercel.app",
         // },
       ],
-      image: "https://gmp-frame-workshop.vercel.appsend-frame.png",
+      image: "https://gmp-frame-workshop.vercel.app/send-frame.png",
       postUrl: "https://gmp-frame-workshop.vercel.app/api/send-message",
     })
   );
