@@ -35,7 +35,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
         value: "",
       },
     };
-    return NextResponse.json({ value });
+    return NextResponse.json({ txData, value });
   } catch (error) {
     return new NextResponse(`Error reading contract: ${error}`, {
       status: 500,
