@@ -37,7 +37,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
   //     GasToken.BASE
   //   );
 
-  console.log("Gas fee", gas);
+  //   console.log("Gas fee", gas);
 
   const data = encodeFunctionData({
     abi: SendMessageABI,
