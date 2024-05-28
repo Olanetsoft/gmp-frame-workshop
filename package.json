@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@axelar-network/axelarjs-sdk": "^0.16.0",
     "@coinbase/onchainkit": "^0.17.2",
     "next": "14.2.3",
     "react": "^18",

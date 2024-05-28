@@ -4,11 +4,19 @@ import { encodeFunctionData, parseEther } from "viem";
 import { base } from "viem/chains";
 import SendMessageABI from "../../_contracts/SendMessageABI";
 import type { FrameTransactionResponse } from "@coinbase/onchainkit/frame";
+import {
+  AxelarQueryAPI,
+  Environment,
+  EvmChain,
+  GasToken,
+} from "@axelar-network/axelarjs-sdk";
 
-// const FANTOM_CONTRACT_ADDRESS = "0xBD8B9fA2BC1Fd65c8bb51132de5026F6E2a29C2E";
-// const CELO_CONTRACT_ADDRESS = "0x4E703bd524eaA03F3685026a2428e3fDF258Da37";
 const BASE_CONTRACT_ADDRESS = "0x5768bE56b4a3Bb3e62C464008e280226eb758fCF";
 const OPTIMISM_CONTRACT_ADDRESS = "0x010e4B8eb87991cD9De316dD614023D1a368b28d";
+
+const api: AxelarQueryAPI = new AxelarQueryAPI({
+  environment: Environment.MAINNET,
+});
 
 async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
   const body: FrameRequest = await req.json();
@@ -18,6 +26,14 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
   if (!isValid) {
     return new NextResponse("Message not valid", { status: 500 });
   }
+
+  const gas = await api.estimateGasFee(
+    EvmChain.BASE,
+    EvmChain.OPTIMISM,
+    700000,
+    "auto",
+    GasToken.BASE
+  );
 
   const data = encodeFunctionData({
     abi: SendMessageABI,
@@ -32,7 +48,8 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
       abi: [],
       data,
       to: BASE_CONTRACT_ADDRESS,
-      value: parseEther("0.00004").toString(), // 0.00004 ETH
+      //   value: parseEther("0.00004").toString(), // 0.00004 ETH
+      value: gas.toString(),
     },
   };
   return NextResponse.json(txData);
