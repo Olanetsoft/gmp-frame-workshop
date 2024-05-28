@@ -52,7 +52,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
       abi: [],
       data,
       to: BASE_CONTRACT_ADDRESS,
-      value: parseEther("0.00004").toString(), // 0.00004 ETH
+      value: parseEther("0.00006").toString(), // 0.00006 ETH
       //   value: gas.toString(),
     },
   };

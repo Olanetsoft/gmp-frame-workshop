@@ -9,6 +9,8 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
   const body: FrameRequest = await req.json();
   const { isValid } = await getFrameMessage(body);
 
+  console.log("body: ", body);
+
   if (!isValid) {
     return new NextResponse("Message not valid", { status: 500 });
   }
@@ -17,25 +19,11 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
     getFrameHtmlResponse({
       buttons: [
         {
-          label: "View transaction",
-          action: "link",
-          target: `https://axelarscan.io/gmp/${body?.untrustedData?.transactionId}`,
-        },
-        {
-          label: "Read data on Optimism",
-          action: "tx",
-          target: "https://gmp-frame-workshop.vercel.app/api/read-message",
-          postUrl:
-            "https://gmp-frame-workshop.vercel.app/api/read-message-success",
-        },
-        {
-          label: "Go back",
-          action: "post_redirect",
-          target: "https://gmp-frame-workshop.vercel.app",
+          label: `${body?.untrustedData?.transactionId}`,
         },
       ],
       image: {
-        src: "https://gmp-frame-workshop.vercel.app/result-frame.png",
+        src: "https://gmp-frame-workshop.vercel.app/read-frame.png",
       },
     })
   );
