@@ -23,13 +23,19 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
     return new NextResponse("Message not valid", { status: 500 });
   }
 
-  const api: AxelarQueryAPI = new AxelarQueryAPI({
+  const api = new AxelarQueryAPI({
     environment: Environment.MAINNET,
   });
 
   console.log("Estimating gas fee...");
 
-  const gas = await api.estimateGasFee("BASE", "OPTIMISM", 700000, 1.1, "ETH");
+  const gas = await api.estimateGasFee(
+    EvmChain.BASE,
+    EvmChain.OPTIMISM,
+    700000,
+    "auto",
+    GasToken.BASE
+  );
 
   console.log("Gas fee", gas);
 
