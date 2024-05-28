@@ -1,14 +1,6 @@
 import { FrameRequest, getFrameMessage } from "@coinbase/onchainkit/frame";
-import {
-  encodeFunctionData,
-  parseEther,
-  Abi,
-  createPublicClient,
-  getContract,
-  http,
-} from "viem";
+import { createPublicClient, getContract, http } from "viem";
 import { NextRequest, NextResponse } from "next/server";
-import { ethers } from "ethers";
 import SendMessageABI from "../../_contracts/SendMessageABI";
 import { optimism } from "viem/chains";
 import type { FrameTransactionResponse } from "@coinbase/onchainkit/frame";
@@ -23,33 +15,27 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
       transport: http(),
     });
 
-    const storageRegistry = getContract({
+    const optimismContract = getContract({
       address: OPTIMISM_CONTRACT_ADDRESS,
       abi: SendMessageABI,
       client: publicClient,
     });
 
-    const unitPrice = await storageRegistry.read.value();
+    const value = await optimismContract.read.value();
 
-    console.log("unitPrice: ", unitPrice);
+    console.log("Value: ", value);
 
-    // const data = encodeFunctionData({
-    //   abi: SendMessageABI,
-    //   functionName: "value",
-    //   // args: ["optimism", OPTIMISM_CONTRACT_ADDRESS, body.untrustedData.inputText],
-    // });
-
-    // const txData: FrameTransactionResponse = {
-    //   chainId: `eip155:${optimism.id}`,
-    //   method: "eth_sendTransaction",
-    //   params: {
-    //     abi: [],
-    //     data,
-    //     to: OPTIMISM_CONTRACT_ADDRESS,
-    //     value: "",
-    //   },
-    // };
-    return NextResponse.json(unitPrice);
+    const txData: FrameTransactionResponse = {
+      chainId: `eip155:${optimism.id}`,
+      method: "eth_sendTransaction",
+      params: {
+        abi: [],
+        data: undefined,
+        to: "0x",
+        value: "",
+      },
+    };
+    return NextResponse.json({ value });
   } catch (error) {
     return new NextResponse(`Error reading contract: ${error}`, {
       status: 500,
