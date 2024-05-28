@@ -1,7 +1,7 @@
 import { FrameRequest, getFrameMessage } from "@coinbase/onchainkit/frame";
 import { NextRequest, NextResponse } from "next/server";
 import { encodeFunctionData, parseEther } from "viem";
-import { fantomTestnet } from "viem/chains";
+import { base } from "viem/chains";
 import SendMessageABI from "../../_contracts/SendMessageABI";
 import type { FrameTransactionResponse } from "@coinbase/onchainkit/frame";
 
@@ -24,7 +24,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
   });
 
   const txData: FrameTransactionResponse = {
-    chainId: `eip155:${fantomTestnet.id}`,
+    chainId: `eip155:${base.id}`,
     method: "eth_sendTransaction",
     params: {
       abi: [],
