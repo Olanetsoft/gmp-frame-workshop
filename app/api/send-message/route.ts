@@ -29,13 +29,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
 
   console.log("Estimating gas fee...");
 
-  const gas = await api.estimateGasFee(
-    EvmChain.BASE,
-    EvmChain.OPTIMISM,
-    700000,
-    "auto",
-    GasToken.BASE
-  );
+  const gas = await api.estimateGasFee("BASE", "OPTIMISM", 700000, 1.1, "ETH");
 
   console.log("Gas fee", gas);
 
