@@ -28,11 +28,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
           postUrl:
             "https://gmp-frame-workshop.vercel.app/api/read-message-success",
         },
-        {
-          label: "Go back",
-          action: "post_redirect",
-          target: "https://gmp-frame-workshop.vercel.app",
-        },
+
       ],
       image: {
         src: "https://gmp-frame-workshop.vercel.app/result-frame.png",
