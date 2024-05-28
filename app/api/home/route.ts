@@ -17,10 +17,8 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         },
         {
           label: "Read data on Optimism",
-          action: "tx",
+          action: "post",
           target: "https://gmp-frame-workshop.vercel.app/api/read-message",
-          postUrl:
-            "https://gmp-frame-workshop.vercel.app/api/read-message-success",
         },
       ],
       image: "https://gmp-frame-workshop.vercel.app/send-frame.png",
