@@ -14,10 +14,6 @@ import {
 const BASE_CONTRACT_ADDRESS = "0x5768bE56b4a3Bb3e62C464008e280226eb758fCF";
 const OPTIMISM_CONTRACT_ADDRESS = "0x010e4B8eb87991cD9De316dD614023D1a368b28d";
 
-const api: AxelarQueryAPI = new AxelarQueryAPI({
-  environment: Environment.MAINNET,
-});
-
 async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
   const body: FrameRequest = await req.json();
 
@@ -26,6 +22,10 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
   if (!isValid) {
     return new NextResponse("Message not valid", { status: 500 });
   }
+  
+  const api: AxelarQueryAPI = new AxelarQueryAPI({
+    environment: Environment.MAINNET,
+  });
 
   const gas = await api.estimateGasFee(
     EvmChain.BASE,
