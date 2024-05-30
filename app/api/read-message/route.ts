@@ -3,6 +3,7 @@ import { createPublicClient, getContract, http } from "viem";
 import { NextRequest, NextResponse } from "next/server";
 import SendMessageABI from "../../_contracts/SendMessageABI";
 import { optimism } from "viem/chains";
+import { config } from "../../config/config";
 
 const OPTIMISM_CONTRACT_ADDRESS = "0x010e4B8eb87991cD9De316dD614023D1a368b28d";
 
@@ -29,7 +30,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse | Response> {
           label: `Message from Optimism: ${value}`,
         },
       ],
-      image: "https://gmp-frame-workshop.vercel.app/read-frame.png",
+      image: `${config.baseURL}/read-frame.png`,
     })
   );
 }

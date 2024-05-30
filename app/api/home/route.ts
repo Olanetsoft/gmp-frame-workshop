@@ -1,5 +1,6 @@
 import { getFrameHtmlResponse } from "@coinbase/onchainkit/frame";
 import { NextRequest, NextResponse } from "next/server";
+import { config } from "../../config/config";
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   return new NextResponse(
@@ -11,18 +12,17 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         {
           action: "tx",
           label: "Send Message",
-          target: "https://gmp-frame-workshop.vercel.app/api/send-message",
-          postUrl:
-            "https://gmp-frame-workshop.vercel.app/api/send-message-success",
+          target: `${config.baseURL}/api/send-message`,
+          postUrl: `${config.baseURL}/api/send-message-success`,
         },
         {
           label: "Read data on Optimism",
           action: "post",
-          target: "https://gmp-frame-workshop.vercel.app/api/read-message",
+          target: `${config.baseURL}/api/read-message`,
         },
       ],
-      image: "https://gmp-frame-workshop.vercel.app/send-frame.png",
-      postUrl: "https://gmp-frame-workshop.vercel.app/api/send-message",
+      image: `${config.baseURL}/send-frame.png`,
+      postUrl: `${config.baseURL}/api/send-message`,
     })
   );
 }
