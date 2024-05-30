@@ -4,7 +4,6 @@ import {
   getFrameHtmlResponse,
 } from "@coinbase/onchainkit/frame";
 import { NextRequest, NextResponse } from "next/server";
-import { config } from "../../config/config";
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
   const body: FrameRequest = await req.json();
@@ -25,11 +24,11 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
         {
           label: "Read data on Optimism",
           action: "post",
-          target: `${config.baseURL}/api/read-message`,
+          target: "https://gmp-frame-workshop.vercel.app/api/read-message",
         },
       ],
       image: {
-        src: `${config.baseURL}/result-frame.png`,
+        src: "https://gmp-frame-workshop.vercel.app/result-frame.png",
       },
     })
   );

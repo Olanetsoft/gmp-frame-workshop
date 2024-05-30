@@ -1,14 +1,13 @@
 import Image from "next/image";
 import { getFrameMetadata } from "@coinbase/onchainkit/frame";
 import type { Metadata } from "next";
-import { config } from "./config/config";
 
 const appInfo = {
   name: "Farcaster Frame to Send Multichain Messages with Axelar GMP",
   description:
     "Build a Farcaster Frame to Send Multichain Messages with Axelar GMP 🔥",
-  image: `${config.baseURL}/read-frame.png`,
-  postUrl: `${config.baseURL}/api/home`,
+  image: "https://gmp-frame-workshop.vercel.app/home-frame.png",
+  postUrl: "https://gmp-frame-workshop.vercel.app/api/home",
 };
 
 const frameMetadata = getFrameMetadata({
